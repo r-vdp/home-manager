@@ -78,13 +78,6 @@ let
     variablelistId = "home-manager-options";
   };
 
-  nixosOptionsDocs = buildOptionsDocs {
-    modules = [ ../nixos scrubbedPkgsModule dontCheckDefinitions ];
-    includeModuleSystemOptions = false;
-    variablelistId = "nixos-options";
-    optionIdPrefix = "nixos-opt-";
-  };
-
   nixDarwinOptionsDocs = buildOptionsDocs {
     modules = [ ../nix-darwin scrubbedPkgsModule dontCheckDefinitions ];
     includeModuleSystemOptions = false;

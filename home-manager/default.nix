@@ -1,7 +1,5 @@
-{ runCommand, lib, bash, callPackage, coreutils, findutils, gettext, gnused, jq
+{ runCommand, lib, bash, coreutils, findutils, gettext, gnused, jq
 , less, ncurses, unixtools
-# used for pkgs.path for nixos-option
-, pkgs
 
 # Path to use as the Home Manager channel.
 , path ? null }:
@@ -9,9 +7,6 @@
 let
 
   pathStr = if path == null then "" else path;
-
-  nixos-option = pkgs.nixos-option or (callPackage
-    (pkgs.path + "/nixos/modules/installer/tools/nixos-option") { });
 
 in runCommand "home-manager" {
   preferLocalBuild = true;
@@ -37,7 +32,6 @@ in runCommand "home-manager" {
         jq
         less
         ncurses
-        nixos-option
         unixtools.hostname
       ]
     }" \
